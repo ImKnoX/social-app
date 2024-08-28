@@ -18,20 +18,6 @@ const PostCard = ({
     title,
     content
 }: Props) => {
-  const [optimisticState, updateOptimisticState] = useOptimistic(
-    { title, content },
-    (prev, next) => ({ ...prev, ...next })
-  );
-
-  const handleTitleChange = (newTitle: string) => {
-    updateOptimisticState({ title: newTitle });
-    // Trigger the actual update here, e.g., an API call
-  };
-
-  const handleContentChange = (newContent: string) => {
-      updateOptimisticState({ content: newContent });
-      // Trigger the actual update here, e.g., an API call
-  };
 
     return(
         <div className="max-w-md mx-auto mt-5 p-4 bg-white rounded-lg shadow-md">
@@ -43,8 +29,8 @@ const PostCard = ({
             <span className="text-gray-500 mx-2">·</span>
             <span className="text-gray-500">{time.toLocaleDateString()}</span>
           </div>
-          <h3 className="mt-2 text-xl font-bold text-gray-900">{optimisticState.title}</h3>
-          <p className="mt-2 text-gray-800">{optimisticState.content}</p>
+          <h3 className="mt-2 text-xl font-bold text-gray-900">{title}</h3>
+          <p className="mt-2 text-gray-800">{content}</p>
          {/**
           * 
           *  <div className="flex justify-between mt-3 text-gray-500">
